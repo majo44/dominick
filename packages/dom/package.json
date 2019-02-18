@@ -1,0 +1,7 @@
+{
+  "name": "@dominick/dom",
+  "version": "0.0.0",
+  "dependencies": {
+    "incremental-dom": "^0.6.0"
+  }
+}
