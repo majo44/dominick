@@ -1,5 +1,5 @@
-import { VNODE } from './utils/symbols.js';
-export { shouldUpdate } from './hooks/shouldUpdate.js';
+import { executeInHandleContext } from "./hooks.js";
+import { VNODE } from './symbols.js';
 
 const literalsCache = new WeakMap();
 
@@ -11,9 +11,10 @@ const literalsCache = new WeakMap();
  * @return
  */
 export function h(literal, ...params) {
+    
     /**
-     *
      * @param createVNode
+     * @param hookHandle
      */
     const vnode = ({createVNode}) => {
         if (!literalsCache.has(literal)) {

@@ -1,11 +1,13 @@
-import { handleHookShouldUpdate } from "../core/hooks/shouldUpdate.js";
-import { handleHookUseEffectPostUpdate, handleHookUseEffectPostRemove } from "../core/hooks/useEffect.js";
-import { handleHookUseState } from "../core/hooks/useState.js";
-import { VNODE } from "../core/utils/symbols.js";
+import { handleHookShouldUpdate } from "./hooks/shouldUpdate.js";
+import { handleHookUseEffectPostUpdate, handleHookUseEffectPostRemove } from "./hooks/useEffect.js";
+import { handleHookUseState } from "./hooks/useState.js";
+import { VNODE } from "../core/symbols.js";
 import { parseDynamicAttributes } from './attrs.js';
 import { applyEvents } from './event.js';
-import { getLocalContext, clearLocalContext, setLocalContext } from '../core/context/localContext.js';
-import { clearGlobalContext, setGlobalContext, getGlobalContext } from '../core/context/globalContext.js';
+import { getLocalContext, clearLocalContext, setLocalContext } from './context/localContext.js';
+import { clearGlobalContext, setGlobalContext, getGlobalContext } from './context/globalContext.js';
+import { hookHandle } from "./hooks/hookHandle.js";
+import { executeInHandleContext } from "../core/hooks.js"
 
 const LOCAL_CONTEXT = Symbol();
 const MARKER = '_@_@_@_';
@@ -59,10 +61,10 @@ function renderChild(child) {
                     currentContext = myPointer[LOCAL_CONTEXT];
                     setLocalContext(currentContext);
                 }
-                child = child();
+                child = executeInHandleContext(child, hookHandle);
                 return renderChild(child);
             } else {
-                return renderChild(child({createVNode}));
+                return renderChild(child({createVNode, hookHandle}));
             }
         }
         case 'string': return text(child);
