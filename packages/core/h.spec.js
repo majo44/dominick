@@ -1,6 +1,6 @@
 import { h } from './h.js';
 describe('h', () => {
-    it('create vnode', () => {
+    it('is using caching for literals', () => {
         const vnode = h`abc${1}def`;
         const node = jest.fn((a) => () => null);
         const createVNode = jest.fn((a) => node);

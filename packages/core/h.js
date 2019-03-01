@@ -1,6 +1,15 @@
-import { executeInHandleContext } from "./hooks.js";
 import { VNODE } from './symbols.js';
 
+/**
+ * @typedef {function(Array.<*>): void} VNodeFactory
+ * @typedef  {function(Array.<string>): VNodeFactory} VNodeFactoryFactory
+ * @typedef {{createVNode: VNodeFactoryFactory}} VNodeContext
+ * @typedef {function(VNodeContext): void} VNode
+ */
+
+/**
+ * @type {WeakMap<object, VNodeFactory>}
+ */
 const literalsCache = new WeakMap();
 
 /**
@@ -8,20 +17,20 @@ const literalsCache = new WeakMap();
  * string literal and parameters.
  * @param {Array.<string>} literal string template literal
  * @param {Array.<*>} params string template parameters values
- * @return
+ * @return {VNode}
  */
 export function h(literal, ...params) {
-    
     /**
-     * @param createVNode
-     * @param hookHandle
+     * @type {*}
+     * @param {VNodeContext} context
      */
-    const vnode = ({createVNode}) => {
+    const vnode = function(context) {
         if (!literalsCache.has(literal)) {
-            literalsCache.set(literal, createVNode(literal));
+            literalsCache.set(literal, context.createVNode(literal));
         }
         literalsCache.get(literal)(params);
     };
+
     vnode[VNODE] = true;
     return vnode;
 }

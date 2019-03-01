@@ -1,5 +1,5 @@
-import { shouldUpdate, h, useState, useRef } from "../../packages/core/index.js";
-import { render } from "../../packages/dom/index.js";
+import { shouldUpdate, h, useState, useRef } from '../../packages/core/index.js';
+import { render } from '../../packages/dom/index.js';
 
 const itemComponent = (item, done, remove) => () => {
     shouldUpdate(item);
@@ -7,8 +7,8 @@ const itemComponent = (item, done, remove) => () => {
         <td>
             ${item.done ? h`<s>${item.title}</s>` : item.title}
         </td>
-        <td><button onclick="${() => done(item)}">${item.done ? 'undone' : 'done'}</button></td>
-        <td><button onclick="${() => remove(item)}">remove</button></td>        
+        <td><button onclick='${() => done(item)}'>${item.done ? 'undone' : 'done'}</button></td>
+        <td><button onclick='${() => remove(item)}'>remove</button></td>        
     </tr>`;
 };
 
@@ -17,14 +17,14 @@ const form = (create) => () => {
     const input = useRef();
     const onkeyup = (e) => {
         const newValue = input.current.value;
-        if (e.key === "Enter") {
+        if (e.key === 'Enter') {
             create(newValue);
             setName('');
         } else if (newValue !== name) {
             setName(newValue);
         }
     };
-    return h`<input ref="${input}" onkeyup="${onkeyup}" value="${name}"/>`
+    return h`<input ref='${input}' onkeyup='${onkeyup}' value='${name}'/>`;
 };
 
 const app = (items, create, done, remove) => () =>
@@ -45,13 +45,11 @@ const create = (title) => {
 
 const done = (item) => {
     items = items.map((i) => {
-       if (i === item) {
-           return {
-               ...i, done: !i.done
-           }
-       } else {
-           return i;
-       }
+        if (i === item) {
+            return { ...i, done: !i.done };
+        } else {
+            return i;
+        }
     });
     renderApp();
 };

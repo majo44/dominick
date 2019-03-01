@@ -1,3 +1,8 @@
+/**
+ * @typedef {Element & {[EVENTS_KEY]: *}} AugmentedElement/**
+ * @typedef {Object.<string, {listener: function(Event): void, capture: boolean}>} ResolvedEventsMap
+ */
+
 const EVENTS_KEY = Symbol();
 
 // https://www.w3.org/TR/html5/webappapis.html#events
@@ -105,10 +110,13 @@ function calculateNormalizeEventName(attrName) {
     return {name, capture};
 }
 
-
+/**
+ * @param {Element} dom
+ * @param {ResolvedEventsMap} events
+ */
 export function applyEvents(dom, events) {
     // apply events handlers
-    const oldEvents = dom[EVENTS_KEY];
+    const oldEvents = /** @type {AugmentedElement} */ (dom)[EVENTS_KEY];
 
     if (events) {
         const eventsNames = Object.keys(events);
@@ -143,5 +151,5 @@ export function applyEvents(dom, events) {
         }
     }
 
-    dom[EVENTS_KEY] = events;
+    /** @type {AugmentedElement} */ (dom)[EVENTS_KEY] = events;
 }

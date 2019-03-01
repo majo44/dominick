@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render is renders simple markup 1`] = `"<div>Hello Majo</div>"`;
+
+exports[`render should not render boolean 1`] = `"<div></div>"`;
+
+exports[`render should properly set checked false attribute also as property 1`] = `false`;
+
+exports[`render should properly set checked false attribute also as property 2`] = `"<input value=\\"value\\">"`;
+
+exports[`render should properly set checked true attribute also as property 1`] = `true`;
+
+exports[`render should properly set checked true attribute also as property 2`] = `"<input value=\\"value\\" checked=\\"\\">"`;
+
+exports[`render should properly set disabled false attribute also as property 1`] = `false`;
+
+exports[`render should properly set disabled false attribute also as property 2`] = `"<input value=\\"value\\">"`;
+
+exports[`render should properly set disabled true attribute also as property 1`] = `true`;
+
+exports[`render should properly set disabled true attribute also as property 2`] = `"<input value=\\"value\\" disabled=\\"\\">"`;
+
+exports[`render should properly set value attribute also as property 1`] = `"value"`;
+
+exports[`render should properly set value attribute also as property 2`] = `"<input value=\\"value\\">"`;
+
+exports[`render should render array of children 1`] = `"<div><span>Hello</span><span>Pawel</span></div>"`;
+
+exports[`render should render empty tag 1`] = `"<div><span></span></div>"`;
+
+exports[`render should render functional component 1`] = `"<div><span>Majo</span></div>"`;
+
+exports[`render should render number 1`] = `"<div>1</div>"`;
