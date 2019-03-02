@@ -24,7 +24,10 @@ const form = (create) => () => {
             setName(newValue);
         }
     };
-    return h`<input ref='${input}' onkeyup='${onkeyup}' value='${name}'/>`;
+    return h`<div>
+        <input ref='${input}' onkeyup='${onkeyup}' value='${name}'/>
+        <span>${name}</span>
+    </div>`;
 };
 
 const app = (items, create, done, remove) => () =>
@@ -37,9 +40,10 @@ const app = (items, create, done, remove) => () =>
     </div>`;
 
 let items = [];
+let counetr = 0;
 
 const create = (title) => {
-    items = [{title},...items];
+    items = [{title, id: counetr++},...items];
     renderApp();
 };
 

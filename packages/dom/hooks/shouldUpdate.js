@@ -16,7 +16,7 @@ export function shouldUpdate(...values) {
 
 /**
  * @param {*} localContext
- * @return {*}
+ * @return {boolean} should component be rerendered
  */
 export function handleHookShouldUpdate(localContext) {
     if (localContext && localContext[SHOULD_UPDATE]) {

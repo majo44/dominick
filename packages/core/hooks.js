@@ -30,7 +30,7 @@ export function executeInHandleContext(fn, handle) {
  * @param {HookType} hook
  * @param {...*=} params
  */
-export function handleHook(hook, ...params) {
+function handleHook(hook, ...params) {
     if (currentHandle) {
         return currentHandle(hook, ...params);
     }

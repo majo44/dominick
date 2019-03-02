@@ -28,7 +28,7 @@ export function h(literal, ...params) {
         if (!literalsCache.has(literal)) {
             literalsCache.set(literal, context.createVNode(literal));
         }
-        literalsCache.get(literal)(params);
+        return literalsCache.get(literal)(params);
     };
 
     vnode[VNODE] = true;

@@ -1,6 +1,6 @@
 import {
     SHOULD_UPDATE_HOOK, USE_CONTEXT_HOOK, USE_EFFECT_HOOK, USE_REF_HOOK, USE_STATE_HOOK
-} from '../../core/symbols.js';
+} from '../../core/index.js';
 import {shouldUpdate} from './shouldUpdate.js';
 import {useContext} from './useContext.js';
 import {useEffect} from './useEffect.js';
