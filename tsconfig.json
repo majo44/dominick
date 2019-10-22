@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+    "allowJs": true,
+    "outDir": "dist",
+    "checkJs": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitThis": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "packages/common/types.d.ts",
+    "packages/core/index.js",
+    "packages/dom/index.js",
+    "packages/server/index.js"
+  ]
+}

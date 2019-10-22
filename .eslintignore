@@ -1,0 +1,4 @@
+*.spec.js
+*.config.js
+jest.config.js
+bundle
